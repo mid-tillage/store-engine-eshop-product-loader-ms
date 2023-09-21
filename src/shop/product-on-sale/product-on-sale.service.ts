@@ -13,6 +13,6 @@ export class ProductOnSaleService {
     async create(createProductOnSaleDto: CreateProductOnSaleDto): Promise<ProductOnSale> {
         const createdProductOnSale = new this.productOnSaleModel(createProductOnSaleDto);
         this.logger.debug(`Saving product... ${createdProductOnSale}`);
-        return createdProductOnSale.save();
+        return await createdProductOnSale.save();
     }
 }
