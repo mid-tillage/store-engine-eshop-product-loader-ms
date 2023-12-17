@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: store-engine-eshop-product-loader-ms-deployment
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: store-engine-eshop-product-loader-ms
+  template:
+    metadata:
+      labels:
+        app: store-engine-eshop-product-loader-ms
+    spec:
+      containers:
+        - name: store-engine-eshop-product-loader-ms-container
+          image: store-engine-eshop-product-loader-ms:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3006
+          env:
+          - name: NODE_ENV
+            value: "production"
+          - name: MONGODB_CONNECTION_STRING
+            value: "mongodb://host.docker.internal:27017/mydb"

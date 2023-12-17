@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: store-engine-eshop-product-loader-ms-service
+spec:
+  selector:
+    app: store-engine-eshop-product-loader-ms
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3006
+  type: NodePort
